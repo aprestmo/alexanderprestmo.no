@@ -1,0 +1,22 @@
+@layer reset, application;
+
+@import url('../../node_modules/the-new-css-reset/css/reset.css') layer(reset);
+
+
+@layer application {
+  body {
+    background-color: #fafafa;
+    font-family: system-ui;
+  }
+
+  header {
+    inline-size: min(100rem, 100vw - 2rem);
+    margin-inline: auto;
+    padding-block: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 2em;
+    line-height: 1;
+  }
+}
