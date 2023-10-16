@@ -1,18 +1,19 @@
 @layer reset, application;
 
-@import url('../../node_modules/the-new-css-reset/css/reset.css') layer(reset);
+@import 'the-new-css-reset/css/reset.css' layer(reset);
 
 
 @layer application {
   body {
     background-color: #fafafa;
+    display: grid;
     font-family: system-ui;
+    min-block-size: 100dvh;
+    place-items: center;
   }
 
   header {
-    inline-size: min(100rem, 100vw - 2rem);
-    margin-inline: auto;
-    padding-block: 0.5rem;
+    padding-block: 0.5em;
   }
   
   h1 {
