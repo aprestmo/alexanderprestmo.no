@@ -10,7 +10,7 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"astro": "^3.4.0"
+		"astro": "^3.4.2"
 	},
 	"devDependencies": {
 		"the-new-css-reset": "^1.11.1"
