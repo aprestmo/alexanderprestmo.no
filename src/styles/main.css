@@ -26,6 +26,7 @@
     color: var(--fg);
     display: grid;
     font-family: system-ui;
+    font-variant-numeric: tabular-nums;
     grid-template-columns: [main-start] minmax(var(--grid-min-padding), 1fr) [content-start] minmax(0, var(--text-max-size)) [content-end] minmax(var(--grid-min-padding), 1fr) [main-end];
     grid-template-rows: [main-start] var(--grid-block-start-size) [content-start] calc(100dvh - (var(--grid-block-start-size) + var(--grid-block-end-size))) [content-end] var(--grid-block-end-size) [main-end];
     place-items: center;
@@ -34,6 +35,10 @@
   main {
     grid-area: content;
     text-align: center;
+
+    > * + * {
+      margin-block-start: 3cap;
+    }
   }
 
   h1 {
@@ -43,8 +48,20 @@
 
   p {
     font-size: clamp(1em, 0.909em + 0.45vw, 1.25em);
-    line-height: 1.4;
-    margin-block-start: 1cap;
+    line-height: 1.5;
     text-wrap: balance;
+  }
+
+  div {
+    display: grid;
+    margin-inline: auto;
+    max-inline-size: 40ch;
+    row-gap: 0.5cap;
+  }
+
+  h2 {
+    font-size: 1.1em;
+    font-variant: all-small-caps;
+    letter-spacing: 0.02em;
   }
 }
