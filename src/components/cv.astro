@@ -7,25 +7,27 @@ const response = await fetch(
 );
 const data = await response.json();
 const cv = data.work_experience;
-console.log(cv);
 ---
 
 <dl>
   {
     cv.map((c) => (
-      <>
+      <div>
         <dt>
           {c.end_date
             ? `${c.start_date}\u2013${c.end_date}`
             : `${c.start_date}`}
+          :
         </dt>
-        <dd>{c.organization}</dd>
-      </>
+        <dt>{c.organization}</dt>
+      </div>
     ))
   }
 </dl>
 
 <style>
-  dl {
+  div {
+    /* column-gap: 1px; */
+    /* display: flex; */
   }
 </style>
