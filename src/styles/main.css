@@ -25,7 +25,7 @@
     color: var(--fg);
     display: grid;
     font-family: system-ui;
-    grid-template-columns: [main-start] 1fr [content-start] var(--text-max-size) [content-end] 1fr [main-end];
+    grid-template-columns: [main-start] 1fr [content-start] minmax(0, var(--text-max-size)) [content-end] 1fr [main-end];
     grid-template-rows: [main-start] var(--grid-block-start-size) [content-start] calc(100dvh - (var(--grid-block-start-size) + var(--grid-block-end-size))) [content-end] var(--grid-block-end-size) [main-end];
     place-items: center;
   }
