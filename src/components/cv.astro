@@ -1,0 +1,31 @@
+---
+const behanceApi = "https://api.behance.net/v2/users/aprestmo/";
+const section = "work_experience";
+
+const response = await fetch(
+  `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_KEY}`
+);
+const data = await response.json();
+const cv = data.work_experience;
+console.log(cv);
+---
+
+<dl>
+  {
+    cv.map((c) => (
+      <>
+        <dt>
+          {c.end_date
+            ? `${c.start_date}\u2013${c.end_date}`
+            : `${c.start_date}`}
+        </dt>
+        <dd>{c.organization}</dd>
+      </>
+    ))
+  }
+</dl>
+
+<style>
+  dl {
+  }
+</style>

@@ -31,7 +31,7 @@
     place-items: center;
   }
 
-  header {
+  main {
     grid-area: content;
     text-align: center;
   }
