@@ -4,20 +4,47 @@
 
 
 @layer application {
+  :root {
+    --bg: oklch(98.51% 0 0);
+    --fg: oklch(0% 0 0);
+
+    --grid-block-end-size: 20em;
+    --grid-block-start-size: 2em;
+    --text-max-size: 60ch;
+
+    @media (prefers-color-scheme: dark) {
+      --bg: oklch(0% 0 0);
+      --fg: oklch(100% 0 0);
+    }
+  }
+
   body {
-    background-color: #fafafa;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialised;
+    background-color: var(--bg);
+    color: var(--fg);
     display: grid;
     font-family: system-ui;
-    min-block-size: 100dvh;
+    grid-template-columns: [main-start] 1fr [content-start] var(--text-max-size) [content-end] 1fr [main-end];
+    grid-template-rows: [main-start] var(--grid-block-start-size) [content-start] calc(100dvh - (var(--grid-block-start-size) + var(--grid-block-end-size))) [content-end] var(--grid-block-end-size) [main-end];
     place-items: center;
   }
 
   header {
+    grid-area: content;
     padding-block: 0.5em;
+    text-align: center;
   }
-  
+
   h1 {
     font-size: 2em;
     line-height: 1;
+  }
+
+  p {
+    font-size: 1.25em;
+    line-height: 1.4;
+    margin-block-start: 1cap;
+    text-wrap: balance;
   }
 }
