@@ -10,6 +10,7 @@
 
     --grid-block-end-size: 20em;
     --grid-block-start-size: 2em;
+    --grid-min-padding: 1rem;
     --text-max-size: 60ch;
 
     @media (prefers-color-scheme: dark) {
@@ -25,24 +26,23 @@
     color: var(--fg);
     display: grid;
     font-family: system-ui;
-    grid-template-columns: [main-start] 1fr [content-start] minmax(0, var(--text-max-size)) [content-end] 1fr [main-end];
+    grid-template-columns: [main-start] minmax(var(--grid-min-padding), 1fr) [content-start] minmax(0, var(--text-max-size)) [content-end] minmax(var(--grid-min-padding), 1fr) [main-end];
     grid-template-rows: [main-start] var(--grid-block-start-size) [content-start] calc(100dvh - (var(--grid-block-start-size) + var(--grid-block-end-size))) [content-end] var(--grid-block-end-size) [main-end];
     place-items: center;
   }
 
   header {
     grid-area: content;
-    padding-block: 0.5em;
     text-align: center;
   }
 
   h1 {
-    font-size: 2em;
+    font-size: clamp(1.625em, 1.489em + 0.68vw, 2em);
     line-height: 1;
   }
 
   p {
-    font-size: 1.25em;
+    font-size: clamp(1em, 0.909em + 0.45vw, 1.25em);
     line-height: 1.4;
     margin-block-start: 1cap;
     text-wrap: balance;
