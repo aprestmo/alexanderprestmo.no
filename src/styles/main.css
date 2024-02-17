@@ -5,7 +5,7 @@
 
 @layer application {
   :root {
-    --bg: oklch(98.51% 0 0);
+    --bg: oklch(97.18% 0.0478 105.22);
     --fg: oklch(0% 0 0);
 
     --grid-min-padding: 1rem;
