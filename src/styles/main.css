@@ -5,7 +5,7 @@
 
 @layer application {
   :root {
-    --bg: oklch(97.18% 0.0478 105.22 / 60%);
+    --bg: oklch(97.18% 0.0478 105.22 / 20%);
     --fg: oklch(0% 0 0);
 
     @media (prefers-color-scheme: dark) {
@@ -31,7 +31,7 @@
   }
 
   h1 {
-    font-size: clamp(1.5em, 1.489em + 0.68vw, 2em);
+    font-size: clamp(1.375rem, 1.148rem + 1.14vw, 2rem);
     font-weight: 300;
     line-height: 1;
   }
@@ -40,7 +40,7 @@
     font-family: "Libre Caslon Text", serif;
     font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
     line-height: 1.6;
-    margin-block-start: 1.5cap;
+    margin-block-start: 1cap;
     text-wrap: balance;
   }
 
