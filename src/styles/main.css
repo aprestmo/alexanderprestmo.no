@@ -27,7 +27,7 @@
   }
 
   main {
-    inline-size: min(var(--text-max-size) - calc(var(--grid-min-padding) * 2));
+    inline-size: min(var(--text-max-size) - 100% - (var(--grid-min-padding) * 2));
     margin-inline: auto;
     text-align: center;
   }
