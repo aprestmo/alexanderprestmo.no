@@ -25,12 +25,14 @@
 
   main {
     inline-size: min(100% - 2rem, 60ch);
+    margin-block-start: 8cap;
     margin-inline: auto;
     text-align: center;
   }
 
   h1 {
-    font-size: clamp(1.625em, 1.489em + 0.68vw, 2em);
+    font-size: clamp(1.5em, 1.489em + 0.68vw, 2em);
+    font-weight: 300;
     line-height: 1;
   }
 
