@@ -35,10 +35,6 @@
   main {
     grid-area: content;
     text-align: center;
-
-    > * + * {
-      margin-block-start: 3cap;
-    }
   }
 
   h1 {
@@ -50,11 +46,13 @@
     font-family: "Libre Caslon Text", serif;
     font-size: clamp(1em, 0.909em + 0.45vw, 1.25em);
     line-height: 1.5;
+    margin-blick-start: 1.5cap;
     text-wrap: balance;
   }
 
   div {
     display: grid;
+    margin-block-start: 3cap;
     margin-inline: auto;
     max-inline-size: 40ch;
     row-gap: 0.5cap;
@@ -63,6 +61,6 @@
   h2 {
     font-size: 1.1em;
     font-variant: all-small-caps;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
   }
 }
