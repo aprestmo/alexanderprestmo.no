@@ -47,6 +47,7 @@
   }
 
   p {
+    font-family: "Libre Caslon Text", serif;
     font-size: clamp(1em, 0.909em + 0.45vw, 1.25em);
     line-height: 1.5;
     text-wrap: balance;
