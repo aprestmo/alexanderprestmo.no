@@ -40,7 +40,7 @@
   p {
     font-family: "Libre Caslon Text", serif;
     font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
-    line-height: 1.6;
+    line-height: 1.65;
     margin-block-start: 1cap;
     text-wrap: balance;
   }
@@ -55,7 +55,7 @@
     font-size: 1.1em;
     font-variant: all-small-caps;
     font-weight: 300;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
   }
   
   a {
