@@ -8,9 +8,6 @@
     --bg: oklch(97.18% 0.0478 105.22 / 60%);
     --fg: oklch(0% 0 0);
 
-    --grid-min-padding: 1rem;
-    --text-max-size: 60ch;
-
     @media (prefers-color-scheme: dark) {
       --bg: oklch(0% 0 0);
       --fg: oklch(100% 0 0);
@@ -27,7 +24,7 @@
   }
 
   main {
-    inline-size: min(var(--text-max-size) - 100% - (var(--grid-min-padding) * 2));
+    inline-size: min(100% - 2rem, 60ch);
     margin-inline: auto;
     text-align: center;
   }
