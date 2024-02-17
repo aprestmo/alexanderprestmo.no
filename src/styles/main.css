@@ -24,7 +24,7 @@
   }
 
   main {
-    inline-size: min(100% - 2rem, 60ch);
+    inline-size: min(100% - 3rem, 60ch);
     margin-block-start: 8cap;
     margin-inline: auto;
     text-align: center;
