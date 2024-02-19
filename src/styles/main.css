@@ -1,9 +1,24 @@
 @layer reset, application;
 
-@import 'the-new-css-reset/css/reset.css' layer(reset);
-
+@import "the-new-css-reset/css/reset.css" layer(reset);
 
 @layer application {
+  @font-face {
+    font-family: 'ax-r';
+    src: url('/fonts/ax-r-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'ax-d';
+    src: url('/fonts/ax-d-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
     --bg: oklch(97.18% 0.0478 105.22 / 20%);
     --fg: oklch(0% 0 0);
@@ -16,10 +31,10 @@
 
   body {
     -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialised;
+    -webkit-font-smoothing: antialiased;
     background-color: var(--bg);
     color: var(--fg);
-    font-family: system-ui;
+    font-family: "Libre Caslon Text", serif;
     font-variant-numeric: tabular-nums;
   }
 
@@ -31,14 +46,14 @@
   }
 
   h1 {
+    font-family: "ax-d", system-ui;
     font-size: clamp(1.5rem, 1.227rem + 1.36vw, 2.25rem);
-    font-weight: 200;
     line-height: 1;
-    margin-block-end: 1.5cap;
+    margin-block-end: 1.25cap;
+    font-weight: 300;
   }
 
   p {
-    font-family: "Libre Caslon Text", serif;
     font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
     line-height: 1.65;
     margin-block-start: 1cap;
@@ -48,17 +63,18 @@
   div {
     display: grid;
     margin-block-start: 5cap;
-    row-gap: 0.5cap;
+    row-gap: 0.75cap;
   }
 
   h2 {
     font-size: 1.1em;
     font-variant: all-small-caps;
-    font-weight: 300;
     letter-spacing: 0.06em;
+    font-weight: 400;
+    font-family: "ax-d", system-ui;
   }
-  
+
   a {
-    font-weight: 300;
+    font-family: "ax-r", system-ui;
   }
 }
