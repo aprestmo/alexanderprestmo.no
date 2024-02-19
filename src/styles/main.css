@@ -5,7 +5,7 @@
 @layer application {
   @font-face {
     font-family: 'ax-r';
-    src: url('/fonts/ax-r-webfont.woff2') format('woff2');
+    src: url('/fonts/ax-r.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@
 
   @font-face {
     font-family: 'ax-d';
-    src: url('/fonts/ax-d-webfont.woff2') format('woff2');
+    src: url('/fonts/ax-d.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -46,11 +46,10 @@
   }
 
   h1 {
-    font-family: "ax-d", system-ui;
-    font-size: clamp(1.5rem, 1.227rem + 1.36vw, 2.25rem);
+    font-family: "ax-r", system-ui;
+    font-size: clamp(1.625rem, 1.227rem + 1.36vw, 2.25rem);
     line-height: 1;
     margin-block-end: 1.25cap;
-    font-weight: 300;
   }
 
   p {
@@ -63,15 +62,15 @@
   div {
     display: grid;
     margin-block-start: 5cap;
-    row-gap: 0.75cap;
+    row-gap: 0.625cap;
   }
 
   h2 {
+    font-family: "ax-d", system-ui;
     font-size: 1.1em;
     font-variant: all-small-caps;
-    letter-spacing: 0.06em;
     font-weight: 400;
-    font-family: "ax-d", system-ui;
+    letter-spacing: 0.06em;
   }
 
   a {
