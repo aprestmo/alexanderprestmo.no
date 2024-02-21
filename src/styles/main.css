@@ -1,31 +1,25 @@
 @layer reset, application;
 
-@import "the-new-css-reset/css/reset.css" layer(reset);
+@import 'the-new-css-reset/css/reset.css' layer(reset);
 
 @layer application {
   @font-face {
-    font-family: 'ax-r';
-    src: url('/fonts/ax-r.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'ax-d';
-    src: url('/fonts/ax-d.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+    font-family: 'ax-v';
+    src: url('/fonts/ax-v.woff2') format('woff2');
   }
 
   :root {
     --bg: oklch(97.18% 0.0478 105.22 / 20%);
     --fg: oklch(0% 0 0);
+    --text-lh: 1.65;
+    accent-color: var(--bg);
+    color-scheme: light dark;
 
     @media (prefers-color-scheme: dark) {
       --bg: oklch(0% 0 0);
       --fg: oklch(100% 0 0);
+      --text-lh: 1.7;
+      color-scheme: dark light;
     }
   }
 
@@ -34,8 +28,9 @@
     -webkit-font-smoothing: antialiased;
     background-color: var(--bg);
     color: var(--fg);
-    font-family: "Libre Caslon Text", serif;
+    font-family: 'ax-v', system-ui;
     font-variant-numeric: tabular-nums;
+    min-block-size: 100svh;
   }
 
   main {
@@ -46,15 +41,16 @@
   }
 
   h1 {
-    font-family: "ax-r", system-ui;
     font-size: clamp(1.625rem, 1.227rem + 1.36vw, 2.25rem);
+    font-weight: 300;
     line-height: 1;
     margin-block-end: 1.25cap;
   }
 
   p {
+    font-family: 'Libre Caslon Text', serif;
     font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
-    line-height: 1.65;
+    line-height: var(--text-lh);
     margin-block-start: 1cap;
     text-wrap: balance;
   }
@@ -66,14 +62,18 @@
   }
 
   h2 {
-    font-family: "ax-d", system-ui;
     font-size: 1.1em;
     font-variant: all-small-caps;
     font-weight: 400;
     letter-spacing: 0.06em;
   }
 
-  a {
-    font-family: "ax-r", system-ui;
+  /* footer {
+    margin-block-start: auto;
+    padding-block: 1rem;
   }
+
+  body:has(#mode:checked) {
+    color-scheme: dark light;
+  } */
 }

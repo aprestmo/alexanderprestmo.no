@@ -1,26 +1,26 @@
 ---
-import "../styles/main.css";
+import '../styles/main.css';
 
-import Cv from "../components/cv.astro";
-import Contact from "../components/contact.astro";
+// import Cv from '../components/cv.astro';
+import Contact from '../components/contact.astro';
 ---
 
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="utf-8" />
+    <meta charset='utf-8' />
     {
       /*
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     */
     }
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
     <title>Alexander Prestmo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap"
-      rel="stylesheet"
+      href='https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap'
+      rel='stylesheet'
     />
   </head>
   <body>
@@ -32,12 +32,25 @@ import Contact from "../components/contact.astro";
         graphic design, print and web.
       </p>
       <p>I love CSS, clear and simple code that gets the job done.</p>
+      {
+        /*
       <div>
         <Cv />
       </div>
+       */
+      }
       <div>
         <Contact />
       </div>
     </main>
+    {
+      /*
+     <footer>
+      <label for='mode'>
+        <input id='mode' type='checkbox' /> Bytt modus
+      </label>
+    </footer>
+     */
+    }
   </body>
 </html>
