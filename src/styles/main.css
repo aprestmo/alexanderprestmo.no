@@ -67,6 +67,10 @@
     font-weight: 400;
     letter-spacing: 0.06em;
   }
+  
+  a {
+    font-weight: 300;
+  }
 
   /* footer {
     margin-block-start: auto;
