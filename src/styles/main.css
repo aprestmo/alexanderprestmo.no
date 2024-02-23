@@ -6,12 +6,14 @@
   @font-face {
     font-family: 'ax-v';
     src: url('/fonts/ax-v.woff2') format('woff2');
+    font-display: swap;
   }
 
   :root {
     --bg: oklch(97.18% 0.0478 105.22 / 20%);
     --fg: oklch(0% 0 0);
     --text-lh: 1.65;
+
     accent-color: var(--bg);
     color-scheme: light dark;
 
@@ -19,6 +21,7 @@
       --bg: oklch(0% 0 0);
       --fg: oklch(100% 0 0);
       --text-lh: 1.7;
+
       color-scheme: dark light;
     }
   }
@@ -30,7 +33,6 @@
     color: var(--fg);
     font-family: 'ax-v', system-ui;
     font-variant-numeric: tabular-nums;
-    min-block-size: 100svh;
   }
 
   main {
@@ -41,7 +43,7 @@
   }
 
   h1 {
-    font-size: clamp(1.625rem, 1.227rem + 1.36vw, 2.25rem);
+    font-size:clamp(1.688em, 1.574em + 0.57vw, 2em);
     font-weight: 300;
     line-height: 1;
     margin-block-end: 1.25cap;
@@ -67,9 +69,18 @@
     font-weight: 400;
     letter-spacing: 0.06em;
   }
-  
+
   a {
-    font-weight: 300;
+    font-weight: 320;
+
+    @media (hover: hover) {
+
+      &:hover {
+        text-decoration: wavy underline;
+        text-decoration-thickness: 0.0625rem;
+        text-underline-offset: 0.1875rem;
+      }
+    }
   }
 
   /* footer {
