@@ -9,7 +9,7 @@ const blogCollection = defineCollection({
 })
 
 const author = defineCollection({
-  type: 'content',
+  type: 'data',
   schema: z.object({
     name: z.string(),
   }),
