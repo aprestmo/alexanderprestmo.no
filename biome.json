@@ -19,6 +19,7 @@
     "ignore": []
   },
   "javascript": {
+    "globals": ["Astro"],
     "formatter": {
       "semicolons": "asNeeded",
       "quoteStyle": "single"
