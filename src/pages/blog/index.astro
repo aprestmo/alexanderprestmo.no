@@ -1,0 +1,30 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+---
+
+<!doctype html>
+<html lang="nb-NO">
+  <head>
+    <BaseHead title="Artikler" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`}>
+                  <h4 class="title">{post.data.title}</h4>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
