@@ -1,4 +1,10 @@
-<h2>Contact</h2>
+---
+const currentLocale = Astro.currentLocale;
+---
+
+<h2>{currentLocale === "en" ? "Contact" : "Kontakt"}</h2>
 <a href="mailto:aprestmo@gmail.com">aprestmo@gmail.com</a>
-<a href="tel:004795066574">(0047)&thinsp;950&thinsp;66&thinsp;574</a>
+<a href=`tel:${currentLocale === 'en' ? '0047' : ''}95066574`
+  >{currentLocale === "en" ? "(0047)\u2009" : ""}950&thinsp;66&thinsp;574</a
+>
 <a href="https://www.linkedin.com/in/aprestmo/">LinkedIn</a>
