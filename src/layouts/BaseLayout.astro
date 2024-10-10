@@ -1,0 +1,21 @@
+---
+import "@/styles/main.css";
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="nb-NO">
+  <head>
+    <BaseHead title="Alexander Prestmo" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+    <Footer />
+  </body>
+</html>
