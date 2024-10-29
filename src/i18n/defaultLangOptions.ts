@@ -1,7 +1,7 @@
 export const Languages = [
   {
     name: 'Norsk Bokmål',
-    value: 'nb-NO',
+    value: 'no',
   },
   {
     name: 'English',
@@ -9,6 +9,6 @@ export const Languages = [
   },
 ] as const
 
-export const defaultLanguage = 'nb-NO'
+export const defaultLanguage = 'no'
 
 export type Lang = (typeof Languages)[number]['value']

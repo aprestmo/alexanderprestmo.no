@@ -1,5 +1,19 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Contact from "@/components/Contact.astro";
 ---
 
-<BaseLayout title=""> Homepage </BaseLayout>
+<BaseLayout title="Alexander Prestmo">
+  <main>
+    <h1>Alexander Prestmo</h1>
+    <p>
+      Jeg er Alexander, bosatt i Oslo, Norge. For tiden jobber jeg i
+      DN&nbsp;Media Group som digital designer og frontend-utvikler. Min
+      bakgrunn er innen grafisk design, print og web.
+    </p>
+    <p>Jeg ❤️ <abbr title="Cascading Style Sheets">CSS</abbr></p>
+    <div>
+      <Contact />
+    </div>
+  </main>
+</BaseLayout>

@@ -1,36 +1,9 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'
-import Contact from '@/components/contact.astro'
-// import Cv from '../components/cv.astro';
----
+import { defaultLanguage } from "@/i18n/defaultLangOptions";
 
-<BaseLayout>
-  <main>
-    <h1>Alexander Prestmo</h1>
-    <p>
-      Jeg er Alexander, bosatt i Oslo, Norge. For tiden jobber jeg i
-      DN&nbsp;Media Group som digital designer og frontend-utvikler. Min
-      bakgrunn er innen grafisk design, print og web.
-    </p>
-    <p>Jeg ❤️ <abbr title="Cascading Style Sheets">CSS</abbr></p>
-    {
-      /*
-        <div>
-          <Cv />
-        </div>
-         */
-    }
-    <div>
-      <Contact />
-    </div>
-  </main>
-  {
-    /*
-       <footer>
-        <label for='mode'>
-          <input id='mode' type='checkbox' /> Bytt modus
-        </label>
-      </footer>
-       */
-  }
-</BaseLayout>
+export const prerender = false;
+
+const locale = Astro.preferredLocale ?? defaultLanguage;
+
+return Astro.redirect(`/${locale}/`, 307);
+---

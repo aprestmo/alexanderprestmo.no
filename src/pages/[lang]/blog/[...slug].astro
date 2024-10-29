@@ -1,22 +1,37 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
-import BlogPost from '@/layouts/BlogPost.astro'
-import { render } from 'astro:content'
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPostLang } from "@/i18n/getPostLang";
+import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog')
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: post,
-  }))
-}
-type Props = CollectionEntry<'blog'>
+export const getStaticPaths = (async () => {
+  const blogPosts = await getCollection("blog");
 
-const post = Astro.props
-const { Content } = await render(post)
+  return blogPosts.map((post) => {
+    const lang = getPostLang(post.slug);
+    const slug = getPostSlugWithoutLang(post.slug);
+    return {
+      params: { lang, slug },
+      props: { post },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+
+console.log(post);
 ---
 
-<BlogPost {...post.data}>
-  yolo
+<BaseLayout title={post.data.title}>
+  <a href={getRelativeLocaleUrl(lang, "blog")}>
+    {lang === "en" ? "Back to Blog" : "Tilbake til blogg"}
+  </a>
+  <h1>{post.data.title}</h1>
   <Content />
-</BlogPost>
+</BaseLayout>

@@ -1,26 +1,26 @@
 ---
-import type { GetStaticPaths } from 'astro'
-import { getCollection } from 'astro:content'
-import BaseLayout from '@/layouts/BaseLayout.astro'
-import { Languages } from '@/i18n/defaultLangOptions'
-import { getPostSlugWithoutLang } from '@/i18n/getPostSlugWithoutLang'
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Languages } from "@/i18n/defaultLangOptions";
+import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
 
 export const getStaticPaths = (() => {
-  const languageValues = Languages.map((lang) => lang.value)
+  const languageValues = Languages.map((lang) => lang.value);
   return languageValues.map((lang) => ({
     params: {
       lang,
     },
-  }))
-}) satisfies GetStaticPaths
+  }));
+}) satisfies GetStaticPaths;
 
-const { lang } = Astro.params
+const { lang } = Astro.params;
 
-const blogPosts = await getCollection('blog', (post) =>
-  post.slug.startsWith(lang),
-)
+const blogPosts = await getCollection("blog", (post) =>
+  post.slug.startsWith(lang)
+);
 
-const title = lang === 'en' ? 'Writings' : 'Artikler'
+const title = lang === "en" ? "Blog Posts" : "Artikler";
 ---
 
 <BaseLayout title={title}>
