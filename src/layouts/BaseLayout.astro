@@ -1,12 +1,24 @@
 ---
-import '@/styles/main.css'
-import BaseHead from '@/components/BaseHead.astro'
-import Footer from '@/components/Footer.astro'
+import "@/styles/main.css";
+
+import Footer from "@/components/Footer.astro";
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+
+const currentLocale = Astro.currentLocale;
 ---
 
-<html lang="nb-NO">
+<html lang={currentLocale}>
   <head>
-    <BaseHead title="Alexander Prestmo" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

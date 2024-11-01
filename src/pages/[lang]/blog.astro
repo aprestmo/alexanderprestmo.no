@@ -1,39 +1,80 @@
 ---
-import type { GetStaticPaths } from 'astro'
-import { getCollection } from 'astro:content'
-import BaseLayout from '@/layouts/BaseLayout.astro'
-import { Languages } from '@/i18n/defaultLangOptions'
-import { getPostSlugWithoutLang } from '@/i18n/getPostSlugWithoutLang'
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Languages } from "@/i18n/defaultLangOptions";
+import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
 
 export const getStaticPaths = (() => {
-  const languageValues = Languages.map((lang) => lang.value)
+  const languageValues = Languages.map((lang) => lang.value);
   return languageValues.map((lang) => ({
     params: {
       lang,
     },
-  }))
-}) satisfies GetStaticPaths
+  }));
+}) satisfies GetStaticPaths;
 
-const { lang } = Astro.params
+const { lang } = Astro.params;
 
-const blogPosts = await getCollection('blog', (post) =>
-  post.slug.startsWith(lang),
-)
+const blogPosts = await getCollection("blog", (post) =>
+  post.slug.startsWith(lang)
+);
 
-const title = lang === 'en' ? 'Writings' : 'Artikler'
+// Sort posts by date in descending order
+const sortedBlogPosts = [...blogPosts].sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const title = lang === "en" ? "Blog Posts" : "Artikler";
+
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
+};
 ---
 
 <BaseLayout title={title}>
-  <h1>{title}</h1>
-  <ul>
-    {
-      blogPosts.map((post) => (
-        <li>
-          <a href={`/${lang}/blog/${getPostSlugWithoutLang(post.slug)}`}>
-            <h2>{post.data.title}</h2>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <main>
+    <h1>{title}</h1>
+    <ol>
+      {
+        sortedBlogPosts.map((post) => (
+          <li>
+            <a href={`/${lang}/blog/${getPostSlugWithoutLang(post.slug)}`}>
+              <time datetime={post.data.date}>
+                {formatDate(post.data.date)}
+              </time>
+              <h2>{post.data.title}</h2>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
 </BaseLayout>
+
+<style>
+  li {
+    border-block-end: 1px solid oklch(0% 0 0 / 20%);
+    padding-block: 1rem;
+    text-align: left;
+
+    &:hover {
+      background-color: oklch(100% 0 0 / 50%);
+      border-color: var(--fg);
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  time {
+    color: oklch(0% 0 0 / 50%);
+    font-size: 0.875rem;
+    font-weight: 320;
+  }
+</style>

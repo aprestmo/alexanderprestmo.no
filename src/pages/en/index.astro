@@ -1,10 +1,9 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'
-import Contact from '@/components/contact.astro'
-// import Cv from '../components/cv.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Contact from "@/components/Contact.astro";
 ---
 
-<BaseLayout>
+<BaseLayout title="Alexander Prestmo">
   <main>
     <h1>Alexander Prestmo</h1>
     <p>
@@ -13,24 +12,8 @@ import Contact from '@/components/contact.astro'
       graphic design, print and web.
     </p>
     <p>I ❤️ <abbr title="Cascading Style Sheets">CSS</abbr></p>
-    {
-      /*
-        <div>
-          <Cv />
-        </div>
-         */
-    }
     <div>
       <Contact />
     </div>
   </main>
-  {
-    /*
-       <footer>
-        <label for='mode'>
-          <input id='mode' type='checkbox' /> Bytt modus
-        </label>
-      </footer>
-       */
-  }
 </BaseLayout>

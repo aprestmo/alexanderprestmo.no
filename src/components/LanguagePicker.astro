@@ -1,7 +1,7 @@
 ---
-import { Languages } from '@/i18n/defaultLangOptions'
+import { Languages } from "@/i18n/defaultLangOptions";
 
-const currentLocale = Astro.currentLocale
+const currentLocale = Astro.currentLocale;
 ---
 
 <select name="lang" id="lang">
@@ -19,10 +19,11 @@ const currentLocale = Astro.currentLocale
   select.addEventListener("change", () => {
     const newLocale = select.value;
     const [_, locale, ...path] = window.location.pathname.split("/");
-    if (newLocale === "en") {
+    /* if (newLocale === "en") {
       window.location.assign(`/${newLocale}/${path.join("/")}`);
     } else {
       window.location.assign(`/${path.join("/")}`);
-    }
+    } */
+    window.location.assign(`/${newLocale}/${path.join("/")}`);
   });
 </script>
