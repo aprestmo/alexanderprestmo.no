@@ -1,23 +1,23 @@
 {
-  "name": "alexanderprestmo",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "astro": "5.0.9",
-    "@astrojs/netlify": "^5.5.4",
-    "typescript": "^5.5.4"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "prettier-plugin-astro": "^0.14.1",
-    "the-new-css-reset": "^1.11.2"
-  }
+	"name": "alexanderprestmo",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.4",
+		"astro": "5.0.9",
+		"@astrojs/netlify": "^5.5.4",
+		"typescript": "^5.5.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"prettier-plugin-astro": "^0.14.1",
+		"the-new-css-reset": "^1.11.2"
+	}
 }

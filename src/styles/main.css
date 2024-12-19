@@ -3,111 +3,111 @@
 @import "the-new-css-reset/css/reset.css" layer(reset);
 
 @layer application {
-  @font-face {
-    font-family: "ax-v";
-    src: url("/fonts/ax-v.woff2") format("woff2");
-  }
+	@font-face {
+		font-family: "ax-v";
+		src: url("/fonts/ax-v.woff2") format("woff2");
+	}
 
-  :root {
-    --bg: oklch(97.18% 0.0478 105.22 / 20%);
-    --fg: oklch(0% 0 0);
-    --text-lh: 1.65;
+	:root {
+		--bg: oklch(97.18% 0.0478 105.22 / 20%);
+		--fg: oklch(0% 0 0);
+		--text-lh: 1.65;
 
-    accent-color: var(--bg);
-    color-scheme: light dark;
+		accent-color: var(--bg);
+		color-scheme: light dark;
 
-    @media (prefers-color-scheme: dark) {
-      --bg: oklch(0% 0 0);
-      --fg: oklch(100% 0 0);
-      --text-lh: 1.7;
+		@media (prefers-color-scheme: dark) {
+			--bg: oklch(0% 0 0);
+			--fg: oklch(100% 0 0);
+			--text-lh: 1.7;
 
-      color-scheme: dark light;
-    }
-  }
+			color-scheme: dark light;
+		}
+	}
 
-  body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    background-color: var(--bg);
-    color: var(--fg);
-    font-family: "ax-v", system-ui;
-    font-variant-numeric: tabular-nums;
-  }
+	body {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		background-color: var(--bg);
+		color: var(--fg);
+		font-family: "ax-v", system-ui;
+		font-variant-numeric: tabular-nums;
+	}
 
-  main {
-    inline-size: min(100% - 2.5rem, 60ch);
-    margin-inline: auto;
-    padding-block-start: 8cap;
-    text-align: center;
-  }
+	main {
+		inline-size: min(100% - 2.5rem, 60ch);
+		margin-inline: auto;
+		padding-block-start: 8cap;
+		text-align: center;
+	}
 
-  h1 {
-    font-size: clamp(1.688em, 1.574em + 0.57vw, 2em);
-    font-weight: 300;
-    line-height: 1;
-    margin-block-end: 1.25cap;
-  }
+	h1 {
+		font-size: clamp(1.688em, 1.574em + 0.57vw, 2em);
+		font-weight: 300;
+		line-height: 1;
+		margin-block-end: 1.25cap;
+	}
 
-  p {
-    font-family: "Libre Caslon Text", serif;
-    font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
-    line-height: var(--text-lh);
-    margin-block-start: 1cap;
-    text-wrap: balance;
-  }
+	p {
+		font-family: "Libre Caslon Text", serif;
+		font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
+		line-height: var(--text-lh);
+		margin-block-start: 1cap;
+		text-wrap: balance;
+	}
 
-  abbr {
-    letter-spacing: 0.06em;
-  }
+	abbr {
+		letter-spacing: 0.06em;
+	}
 
-  div {
-    display: grid;
-    margin-block-start: 5cap;
-    row-gap: 0.625cap;
-  }
+	div {
+		display: grid;
+		margin-block-start: 5cap;
+		row-gap: 0.625cap;
+	}
 
-  h2 {
-    font-size: 1.1em;
-    font-variant: all-small-caps;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-  }
+	h2 {
+		font-size: 1.1em;
+		font-variant: all-small-caps;
+		font-weight: 400;
+		letter-spacing: 0.06em;
+	}
 
-  a {
-    font-weight: 320;
+	a {
+		font-weight: 320;
 
-    @media (hover: hover) {
-      &:hover {
-        text-decoration: wavy underline;
-        text-decoration-thickness: 0.0625rem;
-        text-underline-offset: 0.1875rem;
-      }
-    }
-  }
+		@media (hover: hover) {
+			&:hover {
+				text-decoration: wavy underline;
+				text-decoration-thickness: 0.0625rem;
+				text-underline-offset: 0.1875rem;
+			}
+		}
+	}
 
-  select {
-    border: 1px solid var(--fg);
-    border-radius: 0.375rem;
-    color: var(--fg);
-    cursor: pointer;
-    font-size: 0.875em;
-    font-weight: 320;
-    padding-block-end: 0.4375rem;
-    padding-block-start: 0.5rem;
-    padding-inline: 1rem;
-    transition: background-color 120ms ease-in;
+	select {
+		border: 1px solid var(--fg);
+		border-radius: 0.375rem;
+		color: var(--fg);
+		cursor: pointer;
+		font-size: 0.875em;
+		font-weight: 320;
+		padding-block-end: 0.4375rem;
+		padding-block-start: 0.5rem;
+		padding-inline: 1rem;
+		transition: background-color 120ms ease-in;
 
-    &:focus-visible,
-    &:hover {
-      background-color: color-mix(
-        in oklch,
-        var(--bg) 10%,
-        var(--fg) var(--percentage, 5%)
-      );
+		&:focus-visible,
+		&:hover {
+			background-color: color-mix(
+				in oklch,
+				var(--bg) 10%,
+				var(--fg) var(--percentage, 5%)
+			);
 
-      @media (prefers-color-scheme: dark) {
-        --percentage: 15%;
-      }
-    }
-  }
+			@media (prefers-color-scheme: dark) {
+				--percentage: 15%;
+			}
+		}
+	}
 }

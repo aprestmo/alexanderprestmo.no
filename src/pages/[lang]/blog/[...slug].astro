@@ -1,22 +1,22 @@
 ---
-import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { getPostLang } from "@/i18n/getPostLang";
 import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
-  const blogPosts = await getCollection("blog");
+	const blogPosts = await getCollection("blog");
 
-  return blogPosts.map((post) => {
-    const lang = getPostLang(post.slug);
-    const slug = getPostSlugWithoutLang(post.slug);
-    return {
-      params: { lang, slug },
-      props: { post },
-    };
-  });
+	return blogPosts.map((post) => {
+		const lang = getPostLang(post.slug);
+		const slug = getPostSlugWithoutLang(post.slug);
+		return {
+			params: { lang, slug },
+			props: { post },
+		};
+	});
 }) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
@@ -26,11 +26,11 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 
 const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = date.getFullYear();
-  return `${day}.${month}.${year}`;
+	const date = new Date(dateStr);
+	const day = String(date.getDate()).padStart(2, "0");
+	const month = String(date.getMonth() + 1).padStart(2, "0");
+	const year = date.getFullYear();
+	return `${day}.${month}.${year}`;
 };
 ---
 
