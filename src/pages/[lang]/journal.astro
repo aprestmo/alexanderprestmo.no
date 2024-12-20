@@ -45,7 +45,7 @@ const formatDate = (dateStr: string) => {
         posts.map((post) => (
           <li>
             <a href={`/${lang}/journal/${getPostSlugWithoutLang(post.slug)}`}>
-              <time datetime={post.data.date}>
+              <time datetime={post.data.date.toISOString()}>
                 {formatDate(post.data.date)}
               </time>
               <h2>{post.data.title}</h2>
