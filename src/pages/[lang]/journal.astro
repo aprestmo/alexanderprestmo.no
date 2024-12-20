@@ -9,14 +9,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
-	const journalEntries = await getCollection<"journal">("journal");
+  const journalEntries = await getCollection<"journal">("journal");
 
-	return Languages.map(({ value: lang }) => {
-		const posts = journalEntries.filter((post: CollectionEntry<"journal">) =>
-			post.slug.startsWith(lang),
-		);
-		return { params: { lang }, props: { posts } };
-	});
+  return Languages.map(({ value: lang }) => {
+    const posts = journalEntries
+      .filter((post: CollectionEntry<"journal">) => post.slug.startsWith(lang))
+      .sort(
+        (a, b) =>
+          new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+      );
+
+    return { params: { lang }, props: { posts } };
+  });
 }) satisfies GetStaticPaths;
 
 const { lang = defaultLanguage } = Astro.params;
@@ -25,11 +29,11 @@ const { posts } = Astro.props;
 const title = lang === "en" ? "Journal" : "Artikler";
 
 const formatDate = (dateStr: string) => {
-	const date = new Date(dateStr);
-	const day = String(date.getDate()).padStart(2, "0");
-	const month = String(date.getMonth() + 1).padStart(2, "0");
-	const year = date.getFullYear();
-	return `${day}.${month}.${year}`;
+  const date = new Date(dateStr);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
 };
 ---
 
