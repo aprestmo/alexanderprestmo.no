@@ -48,13 +48,12 @@
 		margin-block-end: 1.25cap;
 	}
 
-	p {
-		font-family: "Libre Caslon Text", serif;
-		font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
-		line-height: var(--text-lh);
-		margin-block-start: 1cap;
-		text-wrap: balance;
-	}
+  p {
+    font-family: "Libre Caslon Text", serif;
+    font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
+    line-height: var(--text-lh);
+    text-wrap: balance;
+  }
 
 	abbr {
 		letter-spacing: 0.06em;
@@ -105,9 +104,17 @@
 				var(--fg) var(--percentage, 5%)
 			);
 
-			@media (prefers-color-scheme: dark) {
-				--percentage: 15%;
-			}
-		}
-	}
+      @media (prefers-color-scheme: dark) {
+        --percentage: 15%;
+      }
+    }
+  }
+
+  iframe {
+    max-inline-size: 100%;
+  }
+
+  .flow > * + * {
+    margin-block-start: 1.25cap;
+  }
 }

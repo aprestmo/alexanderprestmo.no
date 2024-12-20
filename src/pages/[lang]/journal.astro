@@ -1,0 +1,77 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Languages, defaultLanguage } from "@/i18n/defaultLangOptions";
+import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
+
+export const getStaticPaths = (async () => {
+  const journalEntries = await getCollection<"journal">("journal");
+
+  return Languages.map(({ value: lang }) => {
+    const posts = journalEntries.filter((post: CollectionEntry<"journal">) =>
+      post.slug.startsWith(lang),
+    );
+    return { params: { lang }, props: { posts } };
+  });
+}) satisfies GetStaticPaths;
+
+const { lang = defaultLanguage } = Astro.params;
+const { posts } = Astro.props;
+
+const title = lang === "en" ? "Journal" : "Artikler";
+
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
+};
+---
+
+<BaseLayout title={title}>
+  <main class="flow">
+    <h1>{title}</h1>
+    <ol>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/${lang}/journal/${getPostSlugWithoutLang(post.slug)}`}>
+              <time datetime={post.data.date}>
+                {formatDate(post.data.date)}
+              </time>
+              <h2>{post.data.title}</h2>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+</BaseLayout>
+
+<style>
+  li {
+    border-block-end: 1px solid oklch(0% 0 0 / 20%);
+    padding-block: 1rem;
+    text-align: left;
+
+    &:hover {
+      background-color: oklch(100% 0 0 / 50%);
+      border-color: var(--fg);
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  time {
+    color: oklch(0% 0 0 / 50%);
+    font-size: 0.875rem;
+    font-weight: 320;
+  }
+</style>
