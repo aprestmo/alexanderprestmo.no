@@ -8,20 +8,20 @@
 		src: url("/fonts/ax-v.woff2") format("woff2");
 	}
 
-	:root {
-		--bg: oklch(97.18% 0.0478 105.22 / 20%);
-		--fg: oklch(0% 0 0);
+  :root {
+		--bg: light-dark(
+			oklch(97.18% 0.0478 105.22 / 20%),
+			oklch(0% 0 0)
+		);
+		--fg: light-dark(oklch(0% 0 0), oklch(100% 0 0));
 		--text-lh: 1.65;
 
 		accent-color: var(--bg);
-		color-scheme: light dark;
+		color-scheme: light;
 
 		@media (prefers-color-scheme: dark) {
-			--bg: oklch(0% 0 0);
-			--fg: oklch(100% 0 0);
 			--text-lh: 1.7;
-
-			color-scheme: dark light;
+			color-scheme: dark;
 		}
 	}
 
