@@ -94,7 +94,9 @@
 		padding-block-end: 0.4375rem;
 		padding-block-start: 0.5rem;
 		padding-inline: 1rem;
+    text-align: center;
 		transition: background-color 120ms ease-in;
+		white-space: nowrap;
 
 		&:focus-visible,
 		&:hover {
