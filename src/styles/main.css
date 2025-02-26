@@ -8,7 +8,7 @@
 			oklch(97.18% 0.0478 105.22 / 20%),
 			oklch(0% 0 0)
 		);
-		--fg: light-dark(oklch(0% 0 0), oklch(100% 0 0));
+		--fg: light-dark(oklch(30% 0 0), oklch(100% 0 0));
 		--text-lh: 1.65;
 
 		accent-color: var(--bg);
@@ -21,15 +21,13 @@
 	}
 
 	body {
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-font-smoothing: antialiased;
 		background-color: var(--bg);
 		color: var(--fg);
 		font-family: "adobe-caslon-pro", serif;
 	}
 
 	main {
-		inline-size: min(100% - 2.5rem, 70ch);
+		inline-size: min(100% - 2.5rem, 80ch);
 		margin-inline: auto;
 		padding-block-start: 8cap;
 		text-align: center;
@@ -68,37 +66,14 @@
 	}
 
 	a {
-    text-decoration: underline;
-    text-decoration-thickness: 0.0625rem;
-    text-underline-offset: 0.15rem;
-	}
 
-	select {
-		border: 1px solid var(--fg);
-		border-radius: 0.375rem;
-		color: var(--fg);
-		cursor: pointer;
-		font-size: 0.875em;
-		font-weight: 320;
-		padding-block-end: 0.4375rem;
-		padding-block-start: 0.5rem;
-		padding-inline: 1rem;
-    text-align: center;
-		transition: background-color 120ms ease-in;
-		white-space: nowrap;
-
-		&:focus-visible,
-		&:hover {
-			background-color: color-mix(
-				in oklch,
-				var(--bg) 10%,
-				var(--fg) var(--percentage, 5%)
-			);
-
-			@media (prefers-color-scheme: dark) {
-				--percentage: 15%;
-			}
-		}
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 0.0625rem;
+        text-underline-offset: 0.15rem;
+      }
+    }
 	}
 
 	iframe {

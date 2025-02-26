@@ -1,14 +1,29 @@
 ---
 import LanguagePicker from "@/components/LanguagePicker.astro";
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer>
+<footer class="flow">
   <LanguagePicker />
+  <small>
+    Opphavsrett © Alexander Prestmo, 2008&hairsp;&ndash;&hairsp;{
+      currentYear
+    }.<br />
+    Ta kontakt om du vil bruke innhold fra denne siden.
+  </small>
 </footer>
 
 <style>
   footer {
     margin-block-start: 2em;
     text-align: center;
+  }
+
+  small {
+    color: oklch(0% 0 0 / 50%);
+    display: block;
+    line-height: 1.45;
+    font-variant-numeric: oldstyle-nums;
   }
 </style>
