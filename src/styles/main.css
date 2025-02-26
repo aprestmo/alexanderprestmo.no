@@ -29,7 +29,7 @@
 	}
 
 	main {
-		inline-size: min(100% - 2.5rem, 60ch);
+		inline-size: min(100% - 2.5rem, 70ch);
 		margin-inline: auto;
 		padding-block-start: 8cap;
 		text-align: center;
