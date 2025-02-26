@@ -16,7 +16,7 @@ export const getStaticPaths = (async () => {
       .filter((post: CollectionEntry<"journal">) => post.slug.startsWith(lang))
       .sort(
         (a, b) =>
-          new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+          new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
       );
 
     return { params: { lang }, props: { posts } };
@@ -54,6 +54,11 @@ const formatDate = (date: Date) => {
       }
     </ol>
   </main>
+  <div class="flow" style="text-align: center">
+    <a href={`/${lang}`}
+      >&larr; {lang === "en" ? "Back to frontpage" : "Til forsiden"}</a
+    >
+  </div>
 </BaseLayout>
 
 <style>

@@ -3,11 +3,6 @@
 @import "the-new-css-reset/css/reset.css" layer(reset);
 
 @layer application {
-	@font-face {
-		font-family: "ax-v";
-		src: url("/fonts/ax-v.woff2") format("woff2");
-	}
-
   :root {
 		--bg: light-dark(
 			oklch(97.18% 0.0478 105.22 / 20%),
@@ -30,8 +25,7 @@
 		-webkit-font-smoothing: antialiased;
 		background-color: var(--bg);
 		color: var(--fg);
-		font-family: "ax-v", system-ui;
-		font-variant-numeric: tabular-nums;
+		font-family: "adobe-caslon-pro", serif;
 	}
 
 	main {
@@ -43,14 +37,15 @@
 
 	h1 {
 		font-size: clamp(1.688em, 1.574em + 0.57vw, 2em);
-		font-weight: 300;
+    font-feature-settings: "c2sc", "smcp";
+		font-weight: 400;
+    letter-spacing: 0.04em;
 		line-height: 1;
 		margin-block-end: 1.25cap;
 	}
 
 	p {
-		font-family: "Libre Caslon Text", serif;
-		font-size: clamp(1.05em, 0.909em + 0.45vw, 1.25em);
+		font-size: clamp(1.15em, 0.909em + 0.45vw, 1.25em);
 		line-height: var(--text-lh);
 		text-wrap: balance;
 	}
@@ -73,15 +68,9 @@
 	}
 
 	a {
-		font-weight: 320;
-
-		@media (hover: hover) {
-			&:hover {
-				text-decoration: wavy underline;
-				text-decoration-thickness: 0.0625rem;
-				text-underline-offset: 0.1875rem;
-			}
-		}
+    text-decoration: underline;
+    text-decoration-thickness: 0.0625rem;
+    text-underline-offset: 0.15rem;
 	}
 
 	select {
