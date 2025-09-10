@@ -10,6 +10,8 @@ type Props = {
 const { title } = Astro.props;
 
 const currentLocale = Astro.currentLocale;
+
+console.log(Astro.url.pathname);
 ---
 
 <html lang={currentLocale}>
@@ -18,7 +20,13 @@ const currentLocale = Astro.currentLocale;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>
+      {
+        Astro.url.pathname !== "/no" && Astro.url.pathname !== "/en"
+          ? `${title} | Alexander Prestmo`
+          : title
+      }
+    </title>
     <link rel="stylesheet" href="https://use.typekit.net/jds2wjb.css" />
   </head>
   <body>

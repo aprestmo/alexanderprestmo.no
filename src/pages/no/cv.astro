@@ -1,0 +1,60 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BackLink from "@/components/BackLink.astro";
+
+type WorkExperience = {
+  organization: string;
+  position: string;
+  start_date: string;
+  end_date: string;
+};
+
+const behanceApi = "https://api.behance.net/v2/users/aprestmo/";
+const section = "work_experience";
+
+const response = await fetch(
+  `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_KEY}`
+);
+const data = await response.json();
+const { work_experience: cv } = data;
+---
+
+<BaseLayout title="Curriculum vitae">
+  <main>
+    <h1>Curriculum vitae</h1>
+    <ol>
+      {
+        cv.map((c: WorkExperience) => (
+          <li>
+            <h2>{c.organization}</h2>
+            <p>{c.position}</p>
+            <p>
+              <time datetime={c.start_date}>{c.start_date}</time>
+              &hairsp;&ndash;&hairsp;
+              <time datetime={c.end_date}>{c.end_date}</time>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+  <BackLink />
+</BaseLayout>
+
+<style>
+  li {
+    border-block-end: 1px solid oklch(0% 0 0 / 20%);
+    padding-block: 0.5lh;
+    text-align: start;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  p:has(time) {
+    font-variant-numeric: oldstyle-nums;
+    text-box: trim-both cap alphabetic;
+  }
+</style>
