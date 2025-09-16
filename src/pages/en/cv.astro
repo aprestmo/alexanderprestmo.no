@@ -17,31 +17,6 @@ const response = await fetch(
 );
 const data = await response.json();
 const { work_experience: cv } = data;
-
-// Translation map for position titles
-const positionTranslations: Record<string, string> = {
-  graphic: "grafisk",
-  "frontend developer": "frontendutvikler",
-  and: "og",
-};
-
-const translatePosition = (position: string): string => {
-  let translatedPosition = position;
-
-  // Check each translation and replace if found in the string
-  Object.entries(positionTranslations).forEach(([english, norwegian]) => {
-    const regex = new RegExp(english, "gi"); // Case-insensitive global replacement
-    translatedPosition = translatedPosition.replace(regex, (match, offset) => {
-      // If the match is at the beginning of the string, capitalize first letter
-      if (offset === 0) {
-        return norwegian.charAt(0).toUpperCase() + norwegian.slice(1);
-      }
-      return norwegian;
-    });
-  });
-
-  return translatedPosition;
-};
 ---
 
 <BaseLayout title="Curriculum vitae">
@@ -52,12 +27,12 @@ const translatePosition = (position: string): string => {
         cv.map((c: WorkExperience) => (
           <li>
             <h2>{c.organization}</h2>
-            <p>{translatePosition(c.position)}</p>
+            <p>{c.position}</p>
             <p>
               <time datetime={c.start_date}>{c.start_date}</time>
               &hairsp;&ndash;&hairsp;
               <time datetime={c.end_date}>
-                {c.end_date ? c.end_date : "d.d."}
+                {c.end_date ? c.end_date : "to date"}
               </time>
             </p>
           </li>
