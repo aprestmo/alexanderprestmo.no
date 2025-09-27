@@ -1,22 +1,22 @@
 ---
 export const prerender = true;
 
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import { Languages, defaultLanguage } from '@/i18n/defaultLangOptions';
-import { getPostSlugWithoutLang } from '@/i18n/getPostSlugWithoutLang';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import type { GetStaticPaths } from 'astro';
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Languages, defaultLanguage } from "@/i18n/defaultLangOptions";
+import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
-  const journalEntries = await getCollection<'journal'>('journal');
+  const journalEntries = await getCollection<"journal">("journal");
 
   return Languages.map(({ value: lang }) => {
     const posts = journalEntries
-      .filter((post: CollectionEntry<'journal'>) => post.slug.startsWith(lang))
+      .filter((post: CollectionEntry<"journal">) => post.slug.startsWith(lang))
       .sort(
         (a, b) =>
-          new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+          new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
       );
 
     return { params: { lang }, props: { posts } };
@@ -26,11 +26,11 @@ export const getStaticPaths = (async () => {
 const { lang = defaultLanguage } = Astro.params;
 const { posts } = Astro.props;
 
-const title = lang === 'en' ? 'Journal' : 'Artikler';
+const title = lang === "en" ? "Journal" : "Artikler";
 
 const formatDate = (date: Date) => {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
   return `${day}.${month}.${year}`;
 };
@@ -63,22 +63,23 @@ const formatDate = (date: Date) => {
 
 <style>
   li {
-    border-block-end: 1px solid oklch(0% 0 0 / 20%);
+    border-block-end: 1px solid
+      light-dark(oklch(0 0 0 / 20%), oklch(1 0 0 / 20%));
     padding-block: 1rem;
     text-align: left;
 
     &:hover {
-      background-color: oklch(100% 0 0 / 50%);
+      background-color: light-dark(oklch(1 0 0 / 50%), oklch(1 0 0 / 5%));
       border-color: var(--fg);
     }
   }
 
-  a:hover {
+  a {
     text-decoration: none;
   }
 
   time {
-    color: oklch(0% 0 0 / 50%);
+    color: light-dark(oklch(0% 0 0 / 50%), oklch(1 0 0 / 50%));
     font-size: 0.75rem;
   }
 </style>

@@ -4,8 +4,8 @@
 
 @layer application {
   :root {
-    --bg: light-dark(oklch(97.18% 0.0478 105.22 / 20%), oklch(0% 0 0));
-    --fg: light-dark(oklch(30% 0 0), oklch(100% 0 0));
+    --bg: light-dark(oklch(0.9718 0.0478 105.22 / 20%), oklch(0 0 0));
+    --fg: light-dark(oklch(0.3 0 0), oklch(1 0 0));
     --text-lh: 1.65;
 
     accent-color: var(--bg);
@@ -63,11 +63,15 @@
   }
 
   a {
+    text-decoration: underline;
+    text-decoration-color: light-dark(oklch(0 0 0 / 25%), oklch(1 0 0 / 70%));
+    text-decoration-thickness: 0.0625rem;
+    text-underline-offset: 0.1875rem;
+    transition: text-decoration-color 120ms ease-in;
+
     @media (hover: hover) {
       &:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 0.0625rem;
-        text-underline-offset: 0.15rem;
+        text-decoration-color: currentColor;
       }
     }
   }

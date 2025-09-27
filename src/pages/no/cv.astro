@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import BackLink from '@/components/BackLink.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BackLink from "@/components/BackLink.astro";
 
 type WorkExperience = {
   organization: string;
@@ -9,20 +9,20 @@ type WorkExperience = {
   end_date: string;
 };
 
-const behanceApi = 'https://api.behance.net/v2/users/aprestmo/';
-const section = 'work_experience';
+const behanceApi = "https://api.behance.net/v2/users/aprestmo/";
+const section = "work_experience";
 
 const response = await fetch(
-  `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_KEY}`,
+  `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_API_KEY}`
 );
 const data = await response.json();
 const { work_experience: cv } = data;
 
 // Translation map for position titles
 const positionTranslations: Record<string, string> = {
-  graphic: 'grafisk',
-  'frontend developer': 'frontend-utvikler',
-  and: 'og',
+  graphic: "grafisk",
+  "frontend developer": "frontend-utvikler",
+  and: "og",
 };
 
 const translatePosition = (position: string): string => {
@@ -30,7 +30,7 @@ const translatePosition = (position: string): string => {
 
   // Check each translation and replace if found in the string
   for (const [english, norwegian] of Object.entries(positionTranslations)) {
-    const regex = new RegExp(english, 'gi'); // Case-insensitive global replacement
+    const regex = new RegExp(english, "gi"); // Case-insensitive global replacement
     translatedPosition = translatedPosition.replace(regex, (match, offset) => {
       // If the match is at the beginning of the string, capitalize first letter
       if (offset === 0) {
@@ -70,7 +70,7 @@ const translatePosition = (position: string): string => {
 
 <style>
   li {
-    border-block-end: 1px solid oklch(0% 0 0 / 20%);
+    border-block-end: 1px solid var(--fg);
     padding-block: 0.5lh;
     text-align: start;
   }
