@@ -12,11 +12,18 @@ interface WorkExperience {
 const behanceApi = "https://api.behance.net/v2/users/aprestmo/";
 const section = "work_experience";
 
-const response = await fetch(
-  `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_API_KEY}`
-);
-const data = await response.json();
-const { work_experience: cv } = data;
+let cv: WorkExperience[] = [];
+try {
+  const response = await fetch(
+    `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_API_KEY}`
+  );
+  if (response.ok) {
+    const data = await response.json();
+    cv = data.work_experience || [];
+  }
+} catch (error) {
+  console.error("Failed to fetch CV data:", error);
+}
 
 // Translation map for position titles
 const positionTranslations: Record<string, string> = {
