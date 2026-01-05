@@ -1,13 +1,13 @@
 ---
-import BackLink from "@/components/BackLink.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import BackLink from "@/components/back-link.astro";
+import BaseLayout from "@/layouts/base-layout.astro";
 
-type WorkExperience = {
+interface WorkExperience {
   organization: string;
   position: string;
   start_date: string;
   end_date: string;
-};
+}
 
 const behanceApi = "https://api.behance.net/v2/users/aprestmo/";
 const section = "work_experience";

@@ -4,9 +4,9 @@ export const prerender = true;
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import { defaultLanguage, Languages } from "@/i18n/defaultLangOptions";
-import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import { defaultLanguage, Languages } from "@/i18n/default-lang-options";
+import { getPostSlugWithoutLang } from "@/i18n/get-post-slug-without-lang";
+import BaseLayout from "@/layouts/base-layout.astro";
 
 export const getStaticPaths = (async () => {
   const journalEntries = await getCollection<"journal">("journal");

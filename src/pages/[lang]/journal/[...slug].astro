@@ -5,9 +5,9 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import type { GetStaticPaths } from "astro";
-import { getPostLang } from "@/i18n/getPostLang";
-import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPostLang } from "@/i18n/get-post-lang";
+import { getPostSlugWithoutLang } from "@/i18n/get-post-slug-without-lang";
+import BaseLayout from "@/layouts/base-layout.astro";
 
 export const getStaticPaths = (async () => {
   const journalEntries = await getCollection<"journal">("journal");

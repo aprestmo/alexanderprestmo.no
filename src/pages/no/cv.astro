@@ -1,13 +1,13 @@
 ---
-import BackLink from "@/components/BackLink.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import BackLink from "@/components/back-link.astro";
+import BaseLayout from "@/layouts/base-layout.astro";
 
-type WorkExperience = {
+interface WorkExperience {
   organization: string;
   position: string;
   start_date: string;
   end_date: string;
-};
+}
 
 const behanceApi = "https://api.behance.net/v2/users/aprestmo/";
 const section = "work_experience";
@@ -31,9 +31,9 @@ const translatePosition = (position: string): string => {
   // Check each translation and replace if found in the string
   for (const [english, norwegian] of Object.entries(positionTranslations)) {
     const regex = new RegExp(english, "gi"); // Case-insensitive global replacement
-    translatedPosition = translatedPosition.replace(regex, (match, offset) => {
+    translatedPosition = translatedPosition.replace(regex, (match) => {
       // If the match is at the beginning of the string, capitalize first letter
-      if (offset === 0) {
+      if (translatedPosition.indexOf(match) === 0) {
         return norwegian.charAt(0).toUpperCase() + norwegian.slice(1);
       }
       return norwegian;
