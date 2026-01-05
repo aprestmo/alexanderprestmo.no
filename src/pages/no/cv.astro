@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import BackLink from "@/components/BackLink.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 type WorkExperience = {
   organization: string;
@@ -48,8 +48,7 @@ const translatePosition = (position: string): string => {
   <main>
     <h1>Curriculum vitae</h1>
     <ol>
-      {
-        cv.map((c: WorkExperience) => (
+      {cv.map((c: WorkExperience) => (
           <li>
             <h2>{c.organization}</h2>
             <p>{translatePosition(c.position)}</p>
@@ -61,8 +60,7 @@ const translatePosition = (position: string): string => {
               </time>
             </p>
           </li>
-        ))
-      }
+        ))}
     </ol>
   </main>
   <BackLink />

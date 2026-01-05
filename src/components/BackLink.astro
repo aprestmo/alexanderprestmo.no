@@ -1,7 +1,7 @@
 ---
 // Extract language from pathname (e.g., "/no/cv" -> "no", "/en/something" -> "en")
-const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
-const lang = pathSegments[0] || 'no'; // Default to 'no' if no language segment found
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const lang = pathSegments[0] || "no"; // Default to 'no' if no language segment found
 ---
 
 <div class="flow" style="text-align: center">

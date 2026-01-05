@@ -1,12 +1,12 @@
 ---
 export const prerender = true;
 
-import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { Languages, defaultLanguage } from "@/i18n/defaultLangOptions";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { defaultLanguage, Languages } from "@/i18n/defaultLangOptions";
 import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
   const journalEntries = await getCollection<"journal">("journal");
@@ -40,8 +40,7 @@ const formatDate = (date: Date) => {
   <main class="flow">
     <h1>{title}</h1>
     <ol>
-      {
-        posts.map((post) => (
+      {posts.map((post) => (
           <li>
             <a href={`/${lang}/journal/${getPostSlugWithoutLang(post.slug)}`}>
               <time datetime={post.data.date.toISOString()}>
@@ -50,8 +49,7 @@ const formatDate = (date: Date) => {
               <h2>{post.data.title}</h2>
             </a>
           </li>
-        ))
-      }
+        ))}
     </ol>
   </main>
   <div class="flow" style="text-align: center">

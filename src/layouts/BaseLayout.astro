@@ -1,7 +1,7 @@
 ---
-import '@/styles/main.css';
+import "@/styles/main.css";
 
-import Footer from '@/components/Footer.astro';
+import Footer from "@/components/Footer.astro";
 
 type Props = {
   title: string;
@@ -16,18 +16,16 @@ console.log(Astro.url.pathname);
 
 <html lang={currentLocale}>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="utf-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content={Astro.generator}>
     <title>
-      {
-        Astro.url.pathname !== "/no/" && Astro.url.pathname !== "/en/"
+      {Astro.url.pathname !== "/no/" && Astro.url.pathname !== "/en/"
           ? `${title} | Alexander Prestmo`
-          : title
-      }
+          : title}
     </title>
-    <link rel="stylesheet" href="https://use.typekit.net/jds2wjb.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/jds2wjb.css">
   </head>
   <body>
     <slot />

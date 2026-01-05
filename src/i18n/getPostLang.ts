@@ -1,1 +1,1 @@
-export const getPostLang = (slug: string) => slug.split('/')[0];
+export const getPostLang = (slug: string) => slug.split("/")[0];

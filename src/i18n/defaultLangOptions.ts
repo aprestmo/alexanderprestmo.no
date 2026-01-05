@@ -1,14 +1,14 @@
 export const Languages = [
   {
-    name: 'Norsk Bokmål',
-    value: 'no',
+    name: "Norsk Bokmål",
+    value: "no",
   },
   {
-    name: 'English',
-    value: 'en',
+    name: "English",
+    value: "en",
   },
 ] as const;
 
-export const defaultLanguage = 'no';
+export const defaultLanguage = "no";
 
-export type Lang = (typeof Languages)[number]['value'];
+export type Lang = (typeof Languages)[number]["value"];

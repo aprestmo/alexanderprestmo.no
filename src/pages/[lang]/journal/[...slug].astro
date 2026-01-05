@@ -1,18 +1,18 @@
 ---
 export const prerender = true;
 
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getPostLang } from '@/i18n/getPostLang';
-import { getPostSlugWithoutLang } from '@/i18n/getPostSlugWithoutLang';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { GetStaticPaths } from "astro";
+import { getPostLang } from "@/i18n/getPostLang";
+import { getPostSlugWithoutLang } from "@/i18n/getPostSlugWithoutLang";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export const getStaticPaths = (async () => {
-  const journalEntries = await getCollection<'journal'>('journal');
+  const journalEntries = await getCollection<"journal">("journal");
 
-  return journalEntries.map((post: CollectionEntry<'journal'>) => {
+  return journalEntries.map((post: CollectionEntry<"journal">) => {
     const lang = getPostLang(post.slug);
     const slug = getPostSlugWithoutLang(post.slug);
     return {
@@ -23,7 +23,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 interface Props {
-  post: CollectionEntry<'journal'>;
+  post: CollectionEntry<"journal">;
 }
 
 const { lang } = Astro.params;
@@ -31,8 +31,8 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 
 const formatDate = (date: Date) => {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
   return `${day}.${month}.${year}`;
 };
