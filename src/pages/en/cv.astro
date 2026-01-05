@@ -15,7 +15,7 @@ const section = "work_experience";
 let cv: WorkExperience[] = [];
 try {
   const response = await fetch(
-    `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_API_KEY}`
+    `${behanceApi}/${section}?api_key=${import.meta.env.BEHANCE_KEY}`
   );
   if (response.ok) {
     const data = await response.json();
